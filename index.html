@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQI Coin — The Next Generation Payment Method</title>
+<meta name="description" content="EQI Coin — next-generation decentralized payment token on BNB Smart Chain. Fast, secure, low-cost transactions with multi-DEX liquidity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LIVE TICKER -->
+<div class="ticker-bar" id="tickerBar">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-loading">Loading live market data…</span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark"></span>
+      EQI Coin<span class="dot">.</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#markets">Markets</a>
+      <a href="#features">Features</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#buy">How to Buy</a>
+    </nav>
+    <a href="exchange.html" class="btn-signin">Launch App</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="badge">
+      <span class="badge-icon">◆</span> 0% Tax · Fixed Supply · Verified
+    </div>
+    <h1>
+      The Next<br>
+      <span class="accent">Generation</span><br>
+      Payment Method.
+    </h1>
+    <p class="hero-sub">
+      EQI Coin powers fast, low-cost, borderless transactions on BNB Smart Chain.
+      Multi-DEX liquidity, Chainlink-compatible oracle, fully decentralized.
+    </p>
+    <div class="hero-actions">
+      <a href="add.html" class="btn-primary">Add EQIM</a>
+      <a href="https://dexscreener.com/bsc/0x385fB6D58e542c6ceAaCC7767DB18caF89B8ae01" target="_blank" class="btn-ghost">View Chart →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="cards-stack">
+      <div class="vcard vcard-1">
+        <div class="vcard-chip"></div>
+        <div class="vcard-num">8923 7682 3892 1028</div>
+        <div class="vcard-foot"><span>EQI HOLDER</span><span class="vcard-logo">EQI</span></div>
+      </div>
+      <div class="vcard vcard-2"></div>
+      <div class="vcard vcard-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat"><div class="stat-num" id="statPrice">$0.00175</div><div class="stat-label">EQI Price</div></div>
+  <div class="stat"><div class="stat-num" id="statHolders">150+</div><div class="stat-label">Token Holders</div></div>
+  <div class="stat"><div class="stat-num" id="statLiq">$25K+</div><div class="stat-label">Liquidity Pool</div></div>
+  <div class="stat"><div class="stat-num" id="statVol">$263</div><div class="stat-label">24h Volume</div></div>
+</section>
+
+<!-- LIVE MARKETS -->
+<section class="markets-sec" id="markets">
+  <div class="section-head">
+    <h2>Live <span class="accent">Markets.</span></h2>
+    <p>Real-time prices across the crypto market. EQI trades live on BNB Smart Chain.</p>
+  </div>
+  <div class="market-table" id="marketTable">
+    <div class="mt-head">
+      <span>Asset</span><span>Price</span><span>24h</span><span class="mt-spark">Trade</span>
+    </div>
+    <div class="mt-body" id="marketBody">
+      <div class="mt-skeleton">Loading live prices…</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-head">
+    <h2>You do the business,<br>we'll handle the chain.</h2>
+    <p>EQI Coin is built for real utility — secure, transparent, and lightning fast on BNB Smart Chain.</p>
+  </div>
+  <div class="feature-list">
+    <div class="feature">
+      <div class="feature-ic">★</div>
+      <div><h3>Rewards & Utility</h3><p>EQI powers a growing ecosystem with staking, rewards, and cross-protocol utility.</p></div>
+    </div>
+    <div class="feature">
+      <div class="feature-ic">🛡</div>
+      <div><h3>100% Secured</h3><p>Open-source verified contract. No mint function, no hidden fees, fully transparent.</p></div>
+    </div>
+    <div class="feature">
+      <div class="feature-ic">➤</div>
+      <div><h3>Instant Transfers</h3><p>3-second block times and sub-cent fees on BNB Smart Chain. No congestion, no waiting.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section class="tokenomics" id="tokenomics">
+  <h2 class="t-title">Easily control your <span class="accent">tokenomics.</span></h2>
+  <div class="token-grid">
+    <div class="token-card"><div class="token-k">Total Supply</div><div class="token-v">1,000,000 EQI</div></div>
+    <div class="token-card"><div class="token-k">Circulating</div><div class="token-v">1,000,000 EQI</div></div>
+    <div class="token-card"><div class="token-k">Network</div><div class="token-v">BNB Smart Chain</div></div>
+    <div class="token-card"><div class="token-k">Standard</div><div class="token-v">BEP-20</div></div>
+    <div class="token-card"><div class="token-k">Decimals</div><div class="token-v">18</div></div>
+    <div class="token-card"><div class="token-k">Tax</div><div class="token-v">0%</div></div>
+  </div>
+  <div class="contract-pill">Contract: 0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9</div>
+</section>
+
+<!-- HOW TO BUY -->
+<section class="buy" id="buy">
+  <div class="section-head"><h2>Get started in <span class="accent">3 steps.</span></h2></div>
+  <div class="steps">
+    <div class="step"><div class="step-n">01</div><h3>Get BNB</h3><p>Buy BNB on any exchange and send to your MetaMask or Trust Wallet on BSC network.</p></div>
+    <div class="step"><div class="step-n">02</div><h3>Connect Wallet</h3><p>Open the add page or your wallet import screen and paste the EQIM contract.</p></div>
+    <div class="step"><div class="step-n">03</div><h3>Swap & Hold</h3><p>Swap BNB for EQI with 0.5% slippage. Confirm the transaction. Welcome aboard!</p></div>
+  </div>
+  <div class="buy-cta">
+    <a href="exchange.html" class="btn-primary lg">Open EQI Exchange</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="foot-inner">
+    <div class="foot-brand">EQI Coin<span class="dot">.</span></div>
+    <div class="foot-links">
+      <a href="https://bscscan.com/token/0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9" target="_blank">BscScan</a>
+      <a href="add.html">Add EQIM</a>
+      <a href="https://dexscreener.com/bsc/0x385fB6D58e542c6ceAaCC7767DB18caF89B8ae01" target="_blank">DexScreener</a>
+      <a href="exchange.html">Exchange</a>
+    </div>
+  </div>
+  <div class="foot-copy">© 2026 EQI Coin · eqi-coin.com · All rights reserved.</div>
+</footer>
+
+<script src="market.js"></script>
+</body>
+</html>

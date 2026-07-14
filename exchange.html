@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQIM Exchange — Swap BNB ⇄ EQIM</title>
+<meta name="description" content="EQIM Exchange — decentralized swap interface for EQI Main on BNB Smart Chain. Trade BNB ⇄ EQIM instantly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="exchange.css">
+</head>
+<body>
+
+<!-- LIVE TICKER -->
+<div class="ticker-bar" id="tickerBar">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-loading">Loading live market data…</span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"></span>
+      EQIM Exchange<span class="dot">.</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#" class="active">Swap</a>
+      <a href="index.html#markets">Markets</a>
+      <a href="https://bscscan.com/token/0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9" target="_blank">Explorer</a>
+    </nav>
+    <button class="btn-connect" id="connectBtn">Connect Wallet</button>
+  </div>
+</header>
+
+<main class="exchange-main">
+  <!-- SWAP PANEL -->
+  <section class="swap-wrap">
+    <div class="swap-card">
+      <div class="swap-head">
+        <h2>Swap</h2>
+        <button class="settings-btn" title="Settings">⚙</button>
+      </div>
+
+      <div class="token-input">
+        <div class="ti-top"><span>You pay</span><span class="ti-bal" id="bnbBal">Balance: —</span></div>
+        <div class="ti-row">
+          <input type="number" id="payAmount" placeholder="0.0" step="0.0001" oninput="updateQuote()">
+          <div class="token-chip"><span class="t-ico bnb">B</span> BNB</div>
+        </div>
+      </div>
+
+      <div class="swap-divider"><button class="flip-btn" id="flipBtn">⇅</button></div>
+
+      <div class="token-input">
+        <div class="ti-top"><span>You receive</span><span class="ti-bal" id="eqiBal">Balance: —</span></div>
+        <div class="ti-row">
+          <input type="number" id="getAmount" placeholder="0.0" readonly>
+          <div class="token-chip"><span class="t-ico eqi">E</span> EQIM</div>
+        </div>
+      </div>
+
+      <div class="swap-info">
+        <div class="si-row"><span>Rate</span><span id="rate">1 BNB = — EQI</span></div>
+        <div class="si-row"><span>Route</span><span>PancakeSwap V2</span></div>
+        <div class="si-row"><span>Slippage Tolerance</span><span>0.5%</span></div>
+      </div>
+
+      <button class="swap-action" id="swapBtn" onclick="doSwap()">Connect Wallet</button>
+    </div>
+  </section>
+
+  <!-- SIDE STATS + MARKETS -->
+  <aside class="exchange-side">
+    <div class="price-card">
+      <div class="pc-top">
+        <div class="pc-pair"><span class="t-ico eqi">E</span> EQIM / BNB</div>
+        <div class="pc-change up" id="priceChange">▲ live</div>
+      </div>
+      <div class="pc-price" id="priceUsd">$0.00175</div>
+      <div class="pc-stats">
+        <div><span>24h Volume</span><b id="vol24">$263</b></div>
+        <div><span>Liquidity</span><b id="liq">$25K</b></div>
+        <div><span>Holders</span><b id="holders">150+</b></div>
+      </div>
+    </div>
+
+    <div class="markets-card" id="markets">
+      <h3>Live Markets</h3>
+      <div class="mk-body" id="mkBody">
+        <div class="mk-loading">Loading live prices…</div>
+      </div>
+    </div>
+
+    <a href="https://dexscreener.com/bsc/0x385fB6D58e542c6ceAaCC7767DB18caF89B8ae01" target="_blank" class="chart-link">Open full chart on DexScreener →</a>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="foot-inner">
+    <div class="foot-brand">EQIM Exchange<span class="dot">.</span></div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="https://bscscan.com/token/0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9" target="_blank">BscScan</a>
+      <a href="add.html">Add EQIM</a>
+    </div>
+  </div>
+  <div class="foot-copy">© 2026 EQIM Exchange · eqi-coin.com/exchange · Powered by PancakeSwap V2</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+<script src="swap.js"></script>
+</body>
+</html>

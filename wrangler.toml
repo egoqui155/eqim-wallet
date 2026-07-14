@@ -1,0 +1,6 @@
+name = "eqi-supply-api"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+TOKEN_ADDRESS = "0x29005dC84FFE39Be301C7978750cD4B62F245EAc"
