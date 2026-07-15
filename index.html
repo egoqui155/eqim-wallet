@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EQI Coin — The Next Generation Payment Method</title>
+<title>EQI Coin 🪙 — The Next Generation Payment Method</title>
 <meta name="description" content="EQI Coin — next-generation decentralized payment token on BNB Smart Chain. Fast, secure, low-cost transactions with multi-DEX liquidity.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +28,8 @@
     </a>
     <nav class="nav-links">
       <a href="#home">Home</a>
-      <a href="#markets">Markets</a>
-      <a href="#features">Features</a>
+      <a href="about.html">About</a>
+      <a href="whitepaper.html">Whitepaper</a>
       <a href="#tokenomics">Tokenomics</a>
       <a href="#buy">How to Buy</a>
     </nav>
@@ -54,6 +54,7 @@
     </p>
     <div class="hero-actions">
       <a href="add.html" class="btn-primary">Add EQIM</a>
+      <a href="exchange.html" class="btn-ghost">Launch Exchange</a>
       <a href="https://dexscreener.com/bsc/0x385fB6D58e542c6ceAaCC7767DB18caF89B8ae01" target="_blank" class="btn-ghost">View Chart →</a>
     </div>
   </div>
@@ -75,11 +76,23 @@
 <!-- STATS -->
 <section class="stats">
   <div class="stat"><div class="stat-num" id="statPrice">$0.00175</div><div class="stat-label">EQI Price</div></div>
-  <div class="stat"><div class="stat-num" id="statHolders">150+</div><div class="stat-label">Token Holders</div></div>
+  <div class="stat"><div class="stat-num" id="statHolders">1,800+</div><div class="stat-label">Token Holders</div></div>
   <div class="stat"><div class="stat-num" id="statLiq">$25K+</div><div class="stat-label">Liquidity Pool</div></div>
-  <div class="stat"><div class="stat-num" id="statVol">$263</div><div class="stat-label">24h Volume</div></div>
+  <div class="stat"><div class="stat-num" id="statVol">BEP-20</div><div class="stat-label">Token Standard</div></div>
 </section>
-
+<!-- QUICK LINKS -->
+<section class="features" style="padding-top:0;margin-top:-20px">
+  <div class="feature-list" style="max-width:700px;margin:0 auto">
+    <a href="about.html" class="feature" style="text-decoration:none;cursor:pointer">
+      <div class="feature-ic">👥</div>
+      <div><h3>About & Team</h3><p>Meet the team behind EQI Coin. Our mission, values, and roadmap.</p></div>
+    </a>
+    <a href="whitepaper.html" class="feature" style="text-decoration:none;cursor:pointer">
+      <div class="feature-ic">📄</div>
+      <div><h3>Whitepaper</h3><p>Technical architecture, tokenomics, security model, and vision.</p></div>
+    </a>
+  </div>
+</section>
 <!-- LIVE MARKETS -->
 <section class="markets-sec" id="markets">
   <div class="section-head">
@@ -122,8 +135,8 @@
 <section class="tokenomics" id="tokenomics">
   <h2 class="t-title">Easily control your <span class="accent">tokenomics.</span></h2>
   <div class="token-grid">
-    <div class="token-card"><div class="token-k">Total Supply</div><div class="token-v">1,000,000 EQI</div></div>
-    <div class="token-card"><div class="token-k">Circulating</div><div class="token-v">1,000,000 EQI</div></div>
+    <div class="token-card"><div class="token-k">Total Supply</div><div class="token-v">1,000,000,000 EQIM</div></div>
+    <div class="token-card"><div class="token-k">Circulating</div><div class="token-v">1,000,000,000 EQIM</div></div>
     <div class="token-card"><div class="token-k">Network</div><div class="token-v">BNB Smart Chain</div></div>
     <div class="token-card"><div class="token-k">Standard</div><div class="token-v">BEP-20</div></div>
     <div class="token-card"><div class="token-k">Decimals</div><div class="token-v">18</div></div>
@@ -145,11 +158,41 @@
   </div>
 </section>
 
+<!-- QUICK WALLET ADD -->
+<section class="wallet-quick" id="wallet">
+  <div class="section-head">
+    <h2>Add EQIM to <span class="accent">Wallet</span></h2>
+    <p>Import the EQIM token into your wallet in one click.</p>
+  </div>
+
+  <div class="wallet-card">
+    <div class="wallet-head">
+      <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff">E</div>
+      <div>
+        <h3>EQI Main (EQIM)</h3>
+        <p class="wallet-sub">BEP-20 · BNB Smart Chain · 18 Decimals</p>
+      </div>
+    </div>
+
+    <div class="wallet-contract-row">
+      <div class="wallet-contract" id="eqimContract">0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9</div>
+      <button type="button" class="btn-ghost" id="copyContractBtn">Copy</button>
+    </div>
+
+    <div class="wallet-actions">
+      <a id="trustAddLink" class="btn-primary" href="#">Open in Trust Wallet</a>
+      <a id="metaMaskAddLink" class="btn-ghost" href="#">Open in MetaMask</a>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="foot-inner">
     <div class="foot-brand">EQI Coin<span class="dot">.</span></div>
     <div class="foot-links">
+      <a href="about.html">About</a>
+      <a href="whitepaper.html">Whitepaper</a>
       <a href="https://bscscan.com/token/0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9" target="_blank">BscScan</a>
       <a href="add.html">Add EQIM</a>
       <a href="https://dexscreener.com/bsc/0x385fB6D58e542c6ceAaCC7767DB18caF89B8ae01" target="_blank">DexScreener</a>
@@ -160,5 +203,31 @@
 </footer>
 
 <script src="market.js"></script>
+<script>
+  (function () {
+    const tokenAddress = "0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9";
+    const addPage = `${location.origin}/add.html?address=${tokenAddress}&symbol=EQIM&name=EQI%20Main&decimals=18`;
+    const trustLink = `https://link.trustwallet.com/open_url?coin_id=20000714&url=${encodeURIComponent(addPage)}`;
+    const metamaskLink = `https://metamask.app.link/dapp/${addPage.replace(/^https?:\/\//i, "")}`;
+
+    document.getElementById("trustAddLink").href = trustLink;
+    document.getElementById("metaMaskAddLink").href = metamaskLink;
+
+    const copyContractBtn = document.getElementById("copyContractBtn");
+    const eqimContract = document.getElementById("eqimContract");
+
+    copyContractBtn.addEventListener("click", async () => {
+      const text = eqimContract.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        copyContractBtn.textContent = "Copied";
+        setTimeout(() => { copyContractBtn.textContent = "Copy"; }, 1200);
+      } catch (_) {
+        copyContractBtn.textContent = "Copy failed";
+        setTimeout(() => { copyContractBtn.textContent = "Copy"; }, 1200);
+      }
+    });
+  })();
+</script>
 </body>
 </html>

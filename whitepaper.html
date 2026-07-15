@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitepaper — EQI Coin</title>
+<meta name="description" content="EQI Coin Whitepaper — technical architecture, tokenomics, security model, and vision for decentralized payments on BNB Smart Chain.">
+<link rel="icon" href="eqim-logo-32.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-wrap{max-width:820px;margin:0 auto;padding:40px 20px 60px}
+.page-title{font-size:36px;font-weight:800;margin-bottom:8px}
+.page-sub{color:var(--muted);font-size:15px;margin-bottom:40px;line-height:1.6}
+.wp-section{margin-bottom:44px}
+.wp-section h2{font-size:22px;font-weight:700;margin-bottom:14px;color:var(--primary);padding-bottom:8px;border-bottom:1px solid var(--border)}
+.wp-section h3{font-size:17px;font-weight:600;margin:20px 0 8px;color:var(--text)}
+.wp-section p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:12px}
+.wp-section ul,.wp-section ol{padding-left:22px;margin-bottom:14px}
+.wp-section li{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:6px}
+.wp-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+.wp-table th{text-align:left;padding:10px 14px;background:var(--card);border:1px solid var(--border);font-weight:600;color:var(--primary)}
+.wp-table td{padding:10px 14px;border:1px solid var(--border);color:var(--text)}
+.wp-code{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:Consolas,monospace;font-size:13px;overflow-x:auto;margin:12px 0;color:var(--muted)}
+.wp-toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:40px}
+.wp-toc h3{font-size:16px;font-weight:700;margin-bottom:12px}
+.wp-toc ol{padding-left:22px}
+.wp-toc li{margin-bottom:6px}
+.wp-toc a{color:var(--primary);text-decoration:none;font-size:14px}
+.wp-toc a:hover{text-decoration:underline}
+.wp-badge{display:inline-block;background:var(--primary);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;margin-bottom:16px;letter-spacing:0.5px}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:14px;margin-bottom:24px}
+.back-link:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"></span>
+      EQI Coin<span class="dot">.</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="whitepaper.html" class="active">Whitepaper</a>
+      <a href="exchange.html">Exchange</a>
+      <a href="add.html">Add Token</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-wrap">
+  <a href="index.html" class="back-link">← Back to Home</a>
+  <span class="wp-badge">v1.2 — July 2026</span>
+  <h1 class="page-title">EQI Coin Whitepaper</h1>
+  <p class="page-sub">Technical overview and vision for decentralized payments on BNB Smart Chain.</p>
+
+  <!-- TOC -->
+  <div class="wp-toc">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#problem">Problem Statement</a></li>
+      <li><a href="#solution">Solution: EQI Coin</a></li>
+      <li><a href="#architecture">Technical Architecture</a></li>
+      <li><a href="#tokenomics">Tokenomics</a></li>
+      <li><a href="#security">Security Model</a></li>
+      <li><a href="#liquidity">Liquidity & Trading</a></li>
+      <li><a href="#governance">Governance</a></li>
+      <li><a href="#roadmap">Development Roadmap</a></li>
+      <li><a href="#risks">Risk Disclosure</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. ABSTRACT -->
+  <div class="wp-section" id="abstract">
+    <h2>1. Abstract</h2>
+    <p>
+      EQI Coin (ticker: EQIM) is a BEP-20 utility token deployed on BNB Smart Chain, purpose-built for 
+      fast, low-cost peer-to-peer payments. With a fixed supply of 1,000,000,000 tokens, zero transaction tax, 
+      and full smart contract transparency, EQIM provides a simple, efficient medium of exchange 
+      for everyday transactions and cross-border transfers.
+    </p>
+    <p>
+      This document outlines the technical architecture, economic design, security model, 
+      and long-term vision of the EQI ecosystem.
+    </p>
+  </div>
+
+  <!-- 2. PROBLEM -->
+  <div class="wp-section" id="problem">
+    <h2>2. Problem Statement</h2>
+    <p>Traditional payment systems suffer from several critical limitations:</p>
+    <ul>
+      <li><strong>High fees:</strong> Cross-border wire transfers cost $25-50+ and take 3-5 business days.</li>
+      <li><strong>Limited access:</strong> 1.4 billion adults remain unbanked, unable to participate in the global economy.</li>
+      <li><strong>Opacity:</strong> Transaction fees, exchange rates, and processing delays are often hidden from end users.</li>
+      <li><strong>Complexity:</strong> Many DeFi protocols require technical knowledge, creating barriers to adoption.</li>
+    </ul>
+    <p>
+      Existing crypto payment solutions either have high gas fees (Ethereum), slow confirmations (Bitcoin), 
+      or introduce unnecessary complexity through reflection taxes, rebase mechanics, or inflationary models.
+    </p>
+  </div>
+
+  <!-- 3. SOLUTION -->
+  <div class="wp-section" id="solution">
+    <h2>3. Solution: EQI Coin</h2>
+    <p>EQI Coin addresses these issues through simplicity and efficiency:</p>
+    <ul>
+      <li><strong>Zero tax:</strong> No buy/sell tax, no reflection, no hidden fees. 100% of transferred value reaches the recipient.</li>
+      <li><strong>Fixed supply:</strong> 1 billion tokens with no mint function. Supply is permanently capped.</li>
+      <li><strong>Low cost:</strong> BNB Smart Chain transactions cost &lt;$0.01, making micro-payments viable.</li>
+      <li><strong>Instant finality:</strong> 3-second block times provide near-instant transaction confirmation.</li>
+      <li><strong>Universal compatibility:</strong> Standard BEP-20 interface works with every BSC wallet and DEX.</li>
+    </ul>
+  </div>
+
+  <!-- 4. ARCHITECTURE -->
+  <div class="wp-section" id="architecture">
+    <h2>4. Technical Architecture</h2>
+    
+    <h3>4.1 Smart Contract</h3>
+    <p>EQIM is deployed as an upgradeable proxy (ERC-1967) on BNB Smart Chain, enabling future improvements without token migration.</p>
+    <div class="wp-code">
+      Contract: 0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9<br>
+      Standard: BEP-20 (ERC-20 compatible)<br>
+      Network:  BNB Smart Chain (Chain ID: 56)<br>
+      Decimals: 18<br>
+      Compiler: Solidity 0.8.20<br>
+      Source:   Verified on BscScan
+    </div>
+
+    <h3>4.2 Key Features</h3>
+    <ul>
+      <li><strong>ERC-1967 Proxy:</strong> Transparent upgrade mechanism with on-chain governance timelock.</li>
+      <li><strong>Batch Transfers:</strong> Gas-efficient multi-recipient transfers for airdrops and distributions.</li>
+      <li><strong>EIP-2612 Permit:</strong> Gasless approvals via signed messages (meta-transactions support).</li>
+      <li><strong>Owner Controls:</strong> Standard ownership model with transferability. No pausable or blacklist functions.</li>
+    </ul>
+
+    <h3>4.3 Network Choice</h3>
+    <p>BNB Smart Chain was selected for the following reasons:</p>
+    <table class="wp-table">
+      <tr><th>Factor</th><th>BNB Smart Chain</th><th>Ethereum</th></tr>
+      <tr><td>Block Time</td><td>3 seconds</td><td>12 seconds</td></tr>
+      <tr><td>Avg Gas Fee</td><td>&lt;$0.01</td><td>$2-50+</td></tr>
+      <tr><td>TPS Capacity</td><td>~300</td><td>~15</td></tr>
+      <tr><td>Wallet Support</td><td>Universal</td><td>Universal</td></tr>
+      <tr><td>DEX Ecosystem</td><td>PancakeSwap, 1inch</td><td>Uniswap, SushiSwap</td></tr>
+    </table>
+  </div>
+
+  <!-- 5. TOKENOMICS -->
+  <div class="wp-section" id="tokenomics">
+    <h2>5. Tokenomics</h2>
+
+    <table class="wp-table">
+      <tr><th>Parameter</th><th>Value</th></tr>
+      <tr><td>Token Name</td><td>EQI Main</td></tr>
+      <tr><td>Symbol</td><td>EQIM</td></tr>
+      <tr><td>Total Supply</td><td>1,000,000,000 EQIM</td></tr>
+      <tr><td>Circulating Supply</td><td>1,000,000,000 EQIM (100%)</td></tr>
+      <tr><td>Buy/Sell Tax</td><td>0%</td></tr>
+      <tr><td>Mint Function</td><td>None (fixed supply)</td></tr>
+      <tr><td>Burn Mechanism</td><td>Manual burn to dead address (optional)</td></tr>
+    </table>
+
+    <h3>5.1 Distribution</h3>
+    <table class="wp-table">
+      <tr><th>Allocation</th><th>Percentage</th><th>Purpose</th></tr>
+      <tr><td>Liquidity Pool</td><td>5%</td><td>PancakeSwap V2 trading pair (EQIM/BNB)</td></tr>
+      <tr><td>Community Airdrop</td><td>15%</td><td>Distributed to early supporters and community members</td></tr>
+      <tr><td>Development</td><td>20%</td><td>Platform development, infrastructure, and team allocation</td></tr>
+      <tr><td>Marketing</td><td>10%</td><td>Listings, partnerships, awareness campaigns</td></tr>
+      <tr><td>Reserve</td><td>50%</td><td>Long-term ecosystem growth and strategic partnerships</td></tr>
+    </table>
+  </div>
+
+  <!-- 6. SECURITY -->
+  <div class="wp-section" id="security">
+    <h2>6. Security Model</h2>
+    <ul>
+      <li><strong>Verified Source Code:</strong> Full contract source is published and verified on BscScan for public audit.</li>
+      <li><strong>No Hidden Functions:</strong> No selfdestruct, no hidden mint, no blacklist capabilities.</li>
+      <li><strong>Proxy Transparency:</strong> ERC-1967 implementation address is publicly readable on-chain via the standard storage slot.</li>
+      <li><strong>Timelock Governance:</strong> Upgrade requests require a timelock period, preventing instant malicious upgrades.</li>
+      <li><strong>Open Source:</strong> Contract code follows OpenZeppelin standards and is available for community review.</li>
+    </ul>
+    <p>
+      The team is committed to pursuing a formal third-party security audit as the project reaches 
+      sufficient maturity and treasury allocation. Audit firm selection will be announced publicly.
+    </p>
+  </div>
+
+  <!-- 7. LIQUIDITY -->
+  <div class="wp-section" id="liquidity">
+    <h2>7. Liquidity & Trading</h2>
+    <p>EQIM is tradeable on decentralized exchanges via automated market makers (AMMs):</p>
+    <ul>
+      <li><strong>PancakeSwap V2:</strong> Primary EQIM/BNB liquidity pool.</li>
+      <li><strong>DexScreener:</strong> Real-time charts and trading data.</li>
+      <li><strong>GeckoTerminal:</strong> Price tracking and analytics.</li>
+    </ul>
+    <p>
+      Liquidity is provided by the development team and is accessible 24/7 with no trading restrictions. 
+      Additional DEX integrations (PancakeSwap V3, 1inch aggregator) are planned for Q4 2026.
+    </p>
+  </div>
+
+  <!-- 8. GOVERNANCE -->
+  <div class="wp-section" id="governance">
+    <h2>8. Governance</h2>
+    <p>
+      EQI Coin currently operates under a centralized development model with a transparent team. 
+      As the ecosystem matures, the project plans to transition toward community governance:
+    </p>
+    <ul>
+      <li><strong>Phase 1 (Current):</strong> Team-managed development with public communication.</li>
+      <li><strong>Phase 2 (Q4 2026):</strong> Community proposals via snapshot voting for key decisions.</li>
+      <li><strong>Phase 3 (2027):</strong> On-chain governance module for contract upgrades and treasury management.</li>
+    </ul>
+  </div>
+
+  <!-- 9. ROADMAP -->
+  <div class="wp-section" id="roadmap">
+    <h2>9. Development Roadmap</h2>
+    <table class="wp-table">
+      <tr><th>Phase</th><th>Timeline</th><th>Milestones</th></tr>
+      <tr><td>Launch</td><td>Q1 2026</td><td>Contract deployment, BscScan verification, PancakeSwap listing</td></tr>
+      <tr><td>Growth</td><td>Q2 2026</td><td>DexScreener listing, wallet integrations, 1,000+ holders</td></tr>
+      <tr><td>Expansion</td><td>Q3 2026</td><td>CoinGecko/CMC applications, bridge research, payment gateway MVP</td></tr>
+      <tr><td>Infrastructure</td><td>Q4 2026</td><td>Merchant SDK, fiat ramp, CEX listing target</td></tr>
+      <tr><td>Multi-Chain</td><td>Q1 2027</td><td>Ethereum/Polygon bridge, enterprise partnerships</td></tr>
+    </table>
+  </div>
+
+  <!-- 10. RISKS -->
+  <div class="wp-section" id="risks">
+    <h2>10. Risk Disclosure</h2>
+    <p>
+      Cryptocurrency investments carry inherent risks. The following should be considered:
+    </p>
+    <ul>
+      <li><strong>Market Volatility:</strong> Token prices can fluctuate significantly based on market conditions.</li>
+      <li><strong>Regulatory Risk:</strong> The regulatory environment for cryptocurrencies varies by jurisdiction and may change.</li>
+      <li><strong>Smart Contract Risk:</strong> While the contract is verified and follows best practices, no software is guaranteed to be bug-free.</li>
+      <li><strong>Liquidity Risk:</strong> DEX liquidity can vary; large trades may experience price impact.</li>
+    </ul>
+    <p>
+      <strong>Disclaimer:</strong> This document is for informational purposes only. It does not constitute 
+      financial advice or an offer to sell securities. Always conduct your own research before 
+      making investment decisions.
+    </p>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="foot-inner">
+    <div class="foot-brand">EQI Coin<span class="dot">.</span></div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="https://bscscan.com/token/0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9" target="_blank">BscScan</a>
+      <a href="exchange.html">Exchange</a>
+    </div>
+  </div>
+  <div class="foot-copy">© 2026 EQI Coin · eqi-coin.com · All rights reserved.</div>
+</footer>
+</body>
+</html>

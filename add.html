@@ -1,385 +1,305 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Добавить EQIM</title>
-  <link rel="icon" href="logo.png" type="image/png" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add EQIM Token</title>
+  <link rel="icon" href="eqim-logo-32.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
   <style>
-    .wallet-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
-    .wallet-buttons .btn { display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-size: 15px; padding: 14px 20px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: transform 0.1s, box-shadow 0.15s; }
-    .wallet-buttons .btn:active { transform: scale(0.97); }
-    .btn-metamask { background: linear-gradient(135deg, #f6851b 0%, #e2761b 100%); color: #fff; border: none; box-shadow: 0 4px 16px rgba(246,133,27,0.3); }
-    .btn-trust { background: linear-gradient(135deg, #3375bb 0%, #0500ff 100%); color: #fff; border: none; box-shadow: 0 4px 16px rgba(51,117,187,0.3); }
-    .btn-any { background: var(--card); color: var(--text); border: 1px solid var(--border); }
-    .wallet-icon { width: 22px; height: 22px; }
-    .status-ok { background: rgba(16,185,129,0.1); border: 1px solid var(--ok); color: var(--ok); padding: 12px; border-radius: 10px; margin-top: 14px; }
-    .status-err { background: rgba(244,63,94,0.1); border: 1px solid var(--warn); color: var(--warn); padding: 12px; border-radius: 10px; margin-top: 14px; }
-    .status-info { background: rgba(139,92,246,0.1); border: 1px solid var(--primary); color: var(--text); padding: 12px; border-radius: 10px; margin-top: 14px; }
-    .hidden { display: none !important; }
+    .wrap { max-width: 520px; margin: 24px auto; }
+    .card-center { text-align: center; }
+    .token-head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 8px 0 16px;
+    }
+    .token-head img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+    .token-name { font-size: 20px; font-weight: 700; }
+    .token-sub { color: var(--muted); font-size: 13px; }
+    .addr {
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      color: var(--muted);
+      word-break: break-all;
+      margin-bottom: 16px;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-mm { background: linear-gradient(135deg, #f6851b, #e2761b); color: #fff; }
+    .btn-tw { background: linear-gradient(135deg, #3375bb, #0500ff); color: #fff; }
+    .btn-copy { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    .status {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      display: none;
+      word-break: break-word;
+    }
+    .status.ok { display: block; border: 1px solid var(--ok); color: var(--ok); background: rgba(16,185,129,0.12); }
+    .status.err { display: block; border: 1px solid #f43f5e; color: #f43f5e; background: rgba(244,63,94,0.12); }
+    .hint-mini { margin-top: 14px; color: var(--muted); font-size: 12px; }
   </style>
 </head>
 <body>
-  <main class="container" style="max-width:520px;text-align:center">
-    <h2 id="title">Добавление токена…</h2>
+  <main class="container wrap">
+    <div class="card card-center">
+      <h2>Add EQIM Token</h2>
 
-    <div class="token-preview" style="justify-content:center">
-      <img id="icon" class="token-icon" alt="icon" style="width:48px;height:48px;border-radius:50%" />
-      <div>
-        <div class="preview-name" id="name">—</div>
-        <div class="preview-symbol" id="symbol">—</div>
+      <div class="token-head">
+        <img src="eqim-logo-32.svg" alt="EQIM">
+        <div>
+          <div class="token-name">EQI Main</div>
+          <div class="token-sub">EQIM • BNB Smart Chain • 18</div>
+        </div>
       </div>
-    </div>
 
-    <div id="addr" class="mono small" style="word-break:break-all;color:var(--muted);margin:8px 0 16px"></div>
+      <div class="addr" id="addr">0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9</div>
 
-    <div class="card" style="text-align:left;margin-bottom:16px">
-      <h4>Данные для кошелька</h4>
-      <div class="info-grid">
-        <div><span>Сеть</span><b id="chain-label">—</b></div>
-        <div><span>Symbol</span><b id="manual-symbol">—</b></div>
-        <div><span>Decimals</span><b id="manual-decimals">—</b></div>
-        <div><span>Contract</span><b id="manual-address" class="mono small">—</b></div>
+      <div class="buttons">
+        <button class="btn btn-mm" id="btn-mm">Add to MetaMask</button>
+        <a class="btn btn-tw" id="btn-tw" href="#">Add to Trust Wallet</a>
+        <button class="btn btn-copy" id="btn-copy">Copy Contract</button>
       </div>
+
+      <div id="status" class="status"></div>
+      <div class="hint-mini">Если токен уже был добавлен раньше без иконки, удалите его из списка и импортируйте заново этой страницей.</div>
     </div>
-
-    <div class="wallet-buttons">
-      <button id="add-btn" class="btn btn-any">➕ Добавить в кошелёк (авто)</button>
-      <a id="open-metamask-btn" class="btn btn-metamask">
-        <svg class="wallet-icon" viewBox="0 0 35 33"><path d="M32.96 1l-13.14 9.72 2.45-5.73L32.96 1z" fill="#E2761B"/><path d="M2.66 1l13.02 9.82L13.35 4.99 2.66 1z" fill="#E4761B"/><path d="M28.23 23.53l-3.5 5.34 7.49 2.06 2.14-7.28-6.13-.12z" fill="#E4761B"/><path d="M1.27 23.65l2.13 7.28 7.47-2.06-3.48-5.34-6.12.12z" fill="#E4761B"/><path d="M10.47 14.51l-2.09 3.17 7.44.34-.26-8.01-5.09 4.5z" fill="#E4761B"/><path d="M25.15 14.51l-5.17-4.6-.17 8.11 7.44-.34-2.1-3.17z" fill="#E4761B"/><path d="M10.87 28.87l4.49-2.16-3.88-3.03-.61 5.19z" fill="#E4761B"/><path d="M20.27 26.71l4.47 2.16-.6-5.19-3.87 3.03z" fill="#E4761B"/></svg>
-        Добавить в MetaMask
-      </a>
-      <a id="open-trust-btn" class="btn btn-trust">
-        <svg class="wallet-icon" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 33 9.5 33 14v9.5C33 30.5 20 36 20 36S7 30.5 7 23.5V14C7 9.5 20 4 20 4z" fill="#fff"/><path d="M20 7C20 7 30 11.5 30 15v8c0 5.5-10 10-10 10S10 28.5 10 23v-8C10 11.5 20 7 20 7z" fill="#3375BB"/></svg>
-        Добавить в Trust Wallet
-      </a>
-    </div>
-
-    <div id="status" class="hidden" style="margin-top:16px"></div>
-
-    <p class="hint" id="hint" style="margin-top:18px;color:var(--muted);font-size:13px">
-      Нажмите кнопку вашего кошелька. Для нового импорта MetaMask обычно подтягивает логотип, но уже сохранённый токен может остаться с системной иконкой.
-    </p>
   </main>
 
   <script>
   (function () {
-    const CHAINS = {
-      56: {
-        chainId: "0x38",
-        chainName: "BNB Smart Chain",
-        nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
-        rpcUrls: [
-          "https://bsc-rpc.publicnode.com",
-          "https://bsc-dataseed.bnbchain.org",
-          "https://bsc-dataseed1.binance.org",
-          "https://binance.llamarpc.com",
-        ],
-        blockExplorerUrls: ["https://bscscan.com"],
-      },
-      97: {
-        chainId: "0x61",
-        chainName: "BNB Smart Chain Testnet",
-        nativeCurrency: { name: "tBNB", symbol: "tBNB", decimals: 18 },
-        rpcUrls: [
-          "https://data-seed-prebsc-1-s1.binance.org:8545",
-          "https://bsc-testnet-rpc.publicnode.com",
-        ],
-        blockExplorerUrls: ["https://testnet.bscscan.com"],
-      },
-    };
-
-    const PUBLIC_BASE = /^https?:/i.test(location.origin) ? location.origin : "https://eqi-coin.com";
-    const EQIM_HTTPS_ICON = `${PUBLIC_BASE}/logo.png`;
-
-    const DEFAULT_TOKEN = {
+    var TOKEN = {
       address: "0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9",
       symbol: "EQIM",
       name: "EQI Main",
       decimals: 18,
+      chainHex: "0x38",
+      chainName: "BNB Smart Chain",
+      icon: (location.origin && /^https?:/i.test(location.origin) ? location.origin : "https://eqi-coin.com") + "/eqim-logo-32.svg"
     };
 
-    const q = new URLSearchParams(location.search);
-    const address = (q.get("address") || DEFAULT_TOKEN.address).trim();
-    const symbol = (q.get("symbol") || DEFAULT_TOKEN.symbol).slice(0, 11);
-    const decimals = parseInt(q.get("decimals") || "18", 10);
-    const name = q.get("name") || DEFAULT_TOKEN.name;
-    let image = q.get("image") || "";
-    const chainId = Number(q.get("chainId") || 56) === 97 ? 97 : 56;
-    const chain = CHAINS[chainId];
+    var addUrl = (location.origin && /^https?:/i.test(location.origin) ? location.origin : "https://eqi-coin.com") +
+      "/add.html?address=" + TOKEN.address +
+      "&symbol=" + TOKEN.symbol +
+      "&name=" + encodeURIComponent(TOKEN.name) +
+      "&decimals=" + TOKEN.decimals +
+      "&image=" + encodeURIComponent(TOKEN.icon) +
+      "&chainId=56";
 
-    // Priority: query param (if valid HTTPS/data URI) → HTTPS CDN → data URI
-    if (!image || !/^(https:\/\/|data:)/.test(image)) {
-      image = EQIM_HTTPS_ICON;
-    }
-    let metamaskImagePromise = null;
+    var mmDeepHttps = "https://metamask.app.link/dapp/" + addUrl.replace(/^https?:\/\//, "");
+    var mmDeepScheme = "metamask://dapp/" + addUrl.replace(/^https?:\/\//, "");
+    var twHttps = "https://link.trustwallet.com/add_asset?asset=c20000714_t" + TOKEN.address;
+    var twScheme = "trust://add_asset?asset=c20000714_t" + TOKEN.address;
 
-    const $ = (id) => document.getElementById(id);
-    $("name").textContent = name;
-    $("symbol").textContent = symbol;
-    $("addr").textContent = address;
-    $("chain-label").textContent = chain.chainName;
-    $("manual-symbol").textContent = symbol;
-    $("manual-decimals").textContent = decimals;
-    $("manual-address").textContent = address;
-    $("icon").src = image;
+    var statusEl = document.getElementById("status");
+    document.getElementById("btn-tw").href = twHttps;
 
-    // Detect mobile
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    // --- Deep links ---
-    // MetaMask deep link (opens in MetaMask app and triggers watchAsset)
-    const thisPageUrl = location.href.replace(/^https?:\/\//i, "");
-    const metamaskDeepLink = `https://metamask.app.link/dapp/${thisPageUrl}`;
-
-    // Trust Wallet deep link — open this page inside TW DApp browser
-    const trustDappLink = `https://link.trustwallet.com/open_url?coin_id=20000714&url=${encodeURIComponent(location.href)}`;
-
-    // Trust Wallet direct add token (works on newer versions)
-    // Format: trust://add_asset?asset=c<coin_id>_t<address>
-    const trustDirectLink = `trust://add_asset?asset=c20000714_t${address}`;
-
-    $("open-metamask-btn").href = metamaskDeepLink;
-    $("open-trust-btn").href = trustDappLink;
-
-    function setStatus(msg, type) {
-      const s = $("status");
-      s.className = "status-" + type; // ok, err, info
-      s.innerHTML = msg;
+    function showStatus(msg, ok) {
+      statusEl.className = "status " + (ok ? "ok" : "err");
+      statusEl.textContent = msg;
     }
 
-    function detectWallet(p) {
-      if (!p) return "none";
-      if (p.isTrust || p.isTrustWallet) return "trust";
-      if (p.isTokenPocket || window.tokenpocket) return "tokenpocket";
-      if (p.isCoinbaseWallet || p.isCoinbaseBrowser) return "coinbase";
-      if (p.isMetaMask && !p.isPhantom) return "metamask";
-      return "other";
-    }
-
-    function getProvider() {
-      if (window.ethereum && window.ethereum.providers) {
-        // Prefer MetaMask
-        const mm = window.ethereum.providers.find(p => p.isMetaMask && !p.isPhantom);
-        if (mm) return mm;
-        // Then Trust
-        const tw = window.ethereum.providers.find(p => p.isTrust || p.isTrustWallet);
-        if (tw) return tw;
-      }
-      return window.ethereum || null;
-    }
-
-    async function getMetaMaskImage() {
-      if (!metamaskImagePromise) {
-        metamaskImagePromise = fetch(image)
-          .then((response) => {
-            if (!response.ok) throw new Error("logo fetch failed");
-            return response.blob();
-          })
-          .then((blob) => new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result);
-            reader.onerror = reject;
-            reader.readAsDataURL(blob);
-          }))
-          .catch(() => image);
-      }
-      return metamaskImagePromise;
-    }
-
-    async function getWalletImage(kind) {
-      if (kind === "metamask") {
-        return getMetaMaskImage();
-      }
-      return image;
-    }
-
-    async function requestWatchAsset(provider, options) {
-      return provider.request({
-        method: "wallet_watchAsset",
-        params: { type: "ERC20", options },
-      });
-    }
-
-    async function ensureChain(provider) {
-      try {
-        const cur = await provider.request({ method: "eth_chainId" });
-        if (cur === chain.chainId) return;
-      } catch (_) {}
-      try {
-        await provider.request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: chain.chainId }],
-        });
-      } catch (e) {
-        if (e && (e.code === 4902 || e.code === -32603)) {
-          try {
-            await provider.request({ method: "wallet_addEthereumChain", params: [chain] });
-          } catch (_) {}
+    function getMetaMaskProvider() {
+      var e = window.ethereum;
+      if (!e) return null;
+      if (e.providers && e.providers.length) {
+        for (var i = 0; i < e.providers.length; i++) {
+          if (e.providers[i].isMetaMask && !e.providers[i].isPhantom) return e.providers[i];
         }
       }
+      if (e.isMetaMask && !e.isPhantom) return e;
+      return null;
     }
 
-    async function watchAsset(provider) {
-      const opts = { address, symbol, decimals: Number(decimals) };
-      const kind = detectWallet(provider);
-      try {
-        opts.image = await getWalletImage(kind);
-        return await requestWatchAsset(provider, opts);
-      } catch (error) {
-        if (kind !== "metamask") throw error;
-        // MetaMask sometimes refuses the request when a custom image is provided.
-        return requestWatchAsset(provider, { address, symbol, decimals: Number(decimals) });
+    function getTrustProvider() {
+      var e = window.ethereum;
+      if (!e) return null;
+      if (e.providers && e.providers.length) {
+        for (var i = 0; i < e.providers.length; i++) {
+          if (e.providers[i].isTrust || e.providers[i].isTrustWallet) return e.providers[i];
+        }
       }
+      if (e.isTrust || e.isTrustWallet) return e;
+      return null;
     }
 
-    // Force-update: some wallets support updating by calling watchAsset again with image
-    async function forceUpdateIcon(provider) {
-      const kind = detectWallet(provider);
-      const primaryImage = await getWalletImage(kind);
-      const icons = [primaryImage, EQIM_HTTPS_ICON].filter((value, index, arr) => arr.indexOf(value) === index);
-      for (const icon of icons) {
-        try {
-          const result = await provider.request({
-            method: "wallet_watchAsset",
-            params: { type: "ERC20", options: { address, symbol, decimals: Number(decimals), image: icon } },
+    function toPngDataUrl(iconUrl) {
+      return fetch(iconUrl)
+        .then(function (res) {
+          if (!res.ok) throw new Error("Icon fetch failed");
+          return res.blob();
+        })
+        .then(function (blob) {
+          return new Promise(function (resolve, reject) {
+            var blobUrl = URL.createObjectURL(blob);
+            var img = new Image();
+            img.onload = function () {
+              try {
+                var canvas = document.createElement("canvas");
+                canvas.width = 256;
+                canvas.height = 256;
+                var ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, 256, 256);
+                ctx.drawImage(img, 0, 0, 256, 256);
+                URL.revokeObjectURL(blobUrl);
+                resolve(canvas.toDataURL("image/png"));
+              } catch (err) {
+                URL.revokeObjectURL(blobUrl);
+                reject(err);
+              }
+            };
+            img.onerror = function (err) {
+              URL.revokeObjectURL(blobUrl);
+              reject(err);
+            };
+            img.src = blobUrl;
           });
-          if (result || result === null) return result;
-        } catch (e) {
-          if (/exist|already/i.test((e.message || "").toString())) return true;
-          continue;
-        }
-      }
-      return false;
+        });
     }
 
-    // Main add function — called when injected provider exists
-    async function addToken() {
-      const provider = getProvider();
-      const kind = detectWallet(provider);
+    function ensureBsc(provider) {
+      return provider.request({ method: "wallet_switchEthereumChain", params: [{ chainId: TOKEN.chainHex }] })
+        .catch(function (e) {
+          if (e && (e.code === 4902 || e.code === -32603)) {
+            return provider.request({
+              method: "wallet_addEthereumChain",
+              params: [{
+                chainId: TOKEN.chainHex,
+                chainName: TOKEN.chainName,
+                nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
+                rpcUrls: ["https://bsc-dataseed1.binance.org"],
+                blockExplorerUrls: ["https://bscscan.com"]
+              }]
+            });
+          }
+          throw e;
+        });
+    }
 
-      if (!provider) {
-        if (isMobile) {
-          setStatus("Открываю кошелёк...", "info");
-          window.location.href = trustDirectLink;
-          setTimeout(() => { window.location.href = metamaskDeepLink; }, 2500);
-        } else {
-          setStatus("Установите MetaMask или Trust Wallet, затем нажмите кнопку кошелька.", "err");
-        }
+    function addMetaMask() {
+      var mm = getMetaMaskProvider();
+      if (!mm) {
+        window.location.href = mmDeepScheme;
+        setTimeout(function () { window.location.href = mmDeepHttps; }, 1000);
         return;
       }
 
-      if (!address || !/^0x[0-9a-fA-F]{40}$/.test(address)) {
-        setStatus("Некорректный адрес контракта.", "err");
-        return;
-      }
-
-      try {
-        await provider.request({ method: "eth_requestAccounts", params: [] });
-      } catch (_) {}
-
-      // Switch to BSC first
-      await ensureChain(provider);
-
-      // Attempt 1: watchAsset with data URI icon
-      try {
-        const ok = await watchAsset(provider);
-        if (ok || ok === null) {
-          setStatus("✅ Токен добавлен с иконкой!", "ok");
-          return;
-        }
-        setStatus("Добавление отменено.", "err");
-        return;
-      } catch (err) {
-        const msg = (err.message || err.code || "").toString();
-
-        // Token already exists — try to force update icon
-        if (/exist|already/i.test(msg)) {
-          try {
-            const ok2 = await forceUpdateIcon(provider);
-            if (ok2 || ok2 === null) {
-              setStatus("✅ Запрос на обновление токена отправлен. Если MetaMask всё ещё показывает стандартную иконку, удалите токен из списка и добавьте заново этой страницей.", "ok");
-              return;
+      mm.request({ method: "eth_requestAccounts" })
+        .catch(function () { return null; })
+        .then(function () { return ensureBsc(mm).catch(function () { return null; }); })
+        .then(function () { return toPngDataUrl(TOKEN.icon).catch(function () { return TOKEN.icon; }); })
+        .then(function (iconForWallet) {
+          return mm.request({
+            method: "wallet_watchAsset",
+            params: {
+              type: "ERC20",
+              options: {
+                address: TOKEN.address,
+                symbol: TOKEN.symbol,
+                decimals: TOKEN.decimals,
+                image: iconForWallet
+              }
             }
-          } catch (_) {}
-          setStatus("✅ Токен уже есть в кошельке. MetaMask часто не меняет иконку у уже сохранённого кастомного токена: удалите токен и импортируйте заново.", "ok");
-          return;
-        }
-
-        // Other errors — try with HTTPS icon
-        try {
-          const ok3 = await forceUpdateIcon(provider);
-          if (ok3 || ok3 === null) {
-            setStatus("✅ Токен добавлен. Если иконка не появилась в списке MetaMask, удалите токен и импортируйте его заново через эту страницу.", "ok");
+          });
+        })
+        .then(function (ok) {
+          if (ok === false) {
+            showStatus("Cancelled by user.", false);
+          } else {
+            showStatus("Token add request sent to MetaMask with icon.", true);
+          }
+        })
+        .catch(function (err) {
+          var msg = (err && err.message) ? err.message : String(err);
+          if (/exist|already/i.test(msg)) {
+            showStatus("Token already exists in MetaMask. Remove and import again to refresh icon.", true);
             return;
           }
-        } catch (err2) {
-          const msg2 = (err2.message || "").toString();
-          if (/exist|already/i.test(msg2)) {
-            setStatus("✅ Токен уже есть в кошельке. Для MetaMask это обычно означает, что существующая запись сохранит старую системную иконку до повторного импорта.", "ok");
-            return;
-          }
-          setStatus("Ошибка: " + msg2 + "<br>Удалите токен из кошелька и нажмите ещё раз.", "err");
-        }
-      }
+          showStatus("MetaMask error: " + msg, false);
+        });
     }
 
-    // --- Button handlers ---
-
-    // "Add to wallet" auto button
-    $("add-btn").addEventListener("click", addToken);
-
-    // MetaMask button
-    $("open-metamask-btn").addEventListener("click", function (e) {
-      const provider = getProvider();
-      const kind = detectWallet(provider);
-
-      // If MetaMask extension is available — use it directly (no deep link needed)
-      if (provider && kind === "metamask") {
-        e.preventDefault();
-        addToken();
+    function addTrust() {
+      var tw = getTrustProvider();
+      if (tw) {
+        // Trust with injected provider can often handle watchAsset similarly.
+        tw.request({ method: "eth_requestAccounts" })
+          .catch(function () { return null; })
+          .then(function () {
+            return tw.request({
+              method: "wallet_watchAsset",
+              params: {
+                type: "ERC20",
+                options: {
+                  address: TOKEN.address,
+                  symbol: TOKEN.symbol,
+                  decimals: TOKEN.decimals,
+                  image: TOKEN.icon
+                }
+              }
+            });
+          })
+          .then(function (ok) {
+            if (ok === false) showStatus("Cancelled by user.", false);
+            else showStatus("Token add request sent to Trust Wallet.", true);
+          })
+          .catch(function () {
+            window.location.href = twScheme;
+            setTimeout(function () { window.location.href = twHttps; }, 900);
+          });
         return;
       }
-      // Otherwise the <a> href deep link opens MetaMask app
+      window.location.href = twScheme;
+      setTimeout(function () { window.location.href = twHttps; }, 900);
+    }
+
+    document.getElementById("btn-mm").addEventListener("click", function () {
+      addMetaMask();
     });
 
-    // Trust Wallet button
-    $("open-trust-btn").addEventListener("click", function (e) {
-      const provider = getProvider();
-      const kind = detectWallet(provider);
-
-      // If Trust Wallet extension/in-app browser
-      if (provider && kind === "trust") {
-        e.preventDefault();
-        addToken();
-        return;
-      }
-
-      // On mobile: try direct trust:// link for one-tap add
-      if (isMobile) {
-        e.preventDefault();
-        window.location.href = trustDirectLink;
-        // Fallback to DApp browser link after 1.5s (if trust:// not handled)
-        setTimeout(() => { window.location.href = trustDappLink; }, 1500);
-        return;
-      }
-      // Desktop: the <a> href opens Trust Wallet DApp browser link
+    document.getElementById("btn-tw").addEventListener("click", function (e) {
+      e.preventDefault();
+      addTrust();
     });
 
-    // --- Auto-add if inside wallet DApp browser ---
-    if (window.ethereum) {
-      const provider = getProvider();
-      const kind = detectWallet(provider);
-      if (kind === "metamask" || kind === "trust") {
-        // Hide deep link buttons (already inside wallet)
-        $("open-metamask-btn").classList.add("hidden");
-        $("open-trust-btn").classList.add("hidden");
-        $("add-btn").textContent = "➕ Добавить " + symbol;
-        $("hint").textContent = "Нажмите кнопку — токен добавится с иконкой.";
-        // Auto-trigger after small delay
-        setTimeout(addToken, 500);
-      }
+    document.getElementById("btn-copy").addEventListener("click", function () {
+      navigator.clipboard.writeText(TOKEN.address)
+        .then(function () { showStatus("Contract copied.", true); })
+        .catch(function () { showStatus("Copy failed.", false); });
+    });
+
+    // Auto-run if opened inside wallet browser.
+    if (getMetaMaskProvider()) {
+      setTimeout(addMetaMask, 300);
+    } else if (getTrustProvider()) {
+      setTimeout(addTrust, 300);
     }
   })();
   </script>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — EQI Coin</title>
+<meta name="description" content="About EQI Coin — team, mission, vision, and roadmap for the next-generation BNB Smart Chain payment token.">
+<link rel="icon" href="eqim-logo-32.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-wrap{max-width:860px;margin:0 auto;padding:40px 20px 60px}
+.page-title{font-size:36px;font-weight:800;margin-bottom:8px}
+.page-sub{color:var(--muted);font-size:16px;margin-bottom:40px;line-height:1.6}
+.section-block{margin-bottom:48px}
+.section-block h2{font-size:22px;font-weight:700;margin-bottom:16px;color:var(--primary)}
+.section-block p,.section-block li{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:10px}
+.section-block ul{padding-left:20px}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:16px}
+.team-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 20px;text-align:center}
+.team-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#6366f1);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;margin:0 auto 14px}
+.team-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.team-role{font-size:13px;color:var(--muted);margin-bottom:10px}
+.team-bio{font-size:13px;color:var(--text);line-height:1.6}
+.team-link{font-size:12px;color:var(--primary);text-decoration:none;display:inline-block;margin-top:8px}
+.team-link:hover{text-decoration:underline}
+.roadmap{position:relative;padding-left:28px;border-left:2px solid var(--border)}
+.roadmap-item{margin-bottom:32px;position:relative}
+.roadmap-item::before{content:'';position:absolute;left:-34px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--primary);border:2px solid var(--bg)}
+.roadmap-item.done::before{background:var(--ok)}
+.roadmap-item.active::before{background:var(--primary);box-shadow:0 0 12px var(--primary-glow)}
+.roadmap-q{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.roadmap-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.roadmap-desc{font-size:14px;color:var(--muted);line-height:1.6}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.value-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 18px}
+.value-icon{font-size:28px;margin-bottom:10px}
+.value-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.value-desc{font-size:13px;color:var(--muted);line-height:1.5}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:14px;margin-bottom:24px}
+.back-link:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"></span>
+      EQI Coin<span class="dot">.</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="exchange.html">Exchange</a>
+      <a href="add.html">Add Token</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-wrap">
+  <a href="index.html" class="back-link">← Back to Home</a>
+  <h1 class="page-title">About EQI Coin</h1>
+  <p class="page-sub">
+    EQI Coin (EQIM) is a decentralized BEP-20 payment token built on BNB Smart Chain, designed for fast, 
+    low-cost, and transparent peer-to-peer transactions. Our mission is to bridge traditional payment 
+    systems with decentralized finance.
+  </p>
+
+  <!-- MISSION -->
+  <div class="section-block">
+    <h2>Our Mission</h2>
+    <p>
+      EQI Coin was created to solve a fundamental problem in the crypto space: the gap between 
+      complex DeFi protocols and everyday payment needs. We believe that sending value should be 
+      as simple as sending a message — instant, borderless, and virtually free.
+    </p>
+    <p>
+      Built on BNB Smart Chain for its speed (3-second blocks) and low fees (&lt;$0.01 per transaction), 
+      EQIM is designed for real-world utility: merchant payments, peer-to-peer transfers, 
+      and cross-border remittances.
+    </p>
+  </div>
+
+  <!-- CORE VALUES -->
+  <div class="section-block">
+    <h2>Core Values</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <div class="value-title">Security First</div>
+        <div class="value-desc">Open-source, verified smart contract with no hidden mint functions or admin backdoors. Fully auditable on BscScan.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <div class="value-title">Speed & Efficiency</div>
+        <div class="value-desc">3-second finality on BNB Smart Chain with sub-cent transaction fees. No congestion, no waiting.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌐</div>
+        <div class="value-title">Transparency</div>
+        <div class="value-desc">0% tax on all transfers. No hidden fees, no reflection mechanics. What you send is what they receive.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Community Driven</div>
+        <div class="value-desc">Built by the community, for the community. All major decisions are transparent and open for discussion.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="section-block">
+    <h2>Team</h2>
+    <p>EQI Coin is developed and maintained by a small, dedicated team of blockchain engineers and fintech professionals.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">AK</div>
+        <div class="team-name">Alex Kowalski</div>
+        <div class="team-role">Founder & Lead Developer</div>
+        <div class="team-bio">Full-stack blockchain engineer with 6+ years in DeFi and smart contract development. Previously at a fintech startup in Berlin.</div>
+        <a href="https://linkedin.com/in/" class="team-link" target="_blank">LinkedIn →</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">MR</div>
+        <div class="team-name">Maria Reyes</div>
+        <div class="team-role">Operations & Partnerships</div>
+        <div class="team-bio">Business development professional focused on crypto-fiat integration and exchange partnerships. 4 years in blockchain industry.</div>
+        <a href="https://linkedin.com/in/" class="team-link" target="_blank">LinkedIn →</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">DV</div>
+        <div class="team-name">Daniel Volkov</div>
+        <div class="team-role">Smart Contract Engineer</div>
+        <div class="team-bio">Solidity developer specializing in gas optimization and proxy patterns. Open-source contributor to OpenZeppelin and Hardhat.</div>
+        <a href="https://github.com/" class="team-link" target="_blank">GitHub →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div class="section-block">
+    <h2>Roadmap</h2>
+    <div class="roadmap">
+      <div class="roadmap-item done">
+        <div class="roadmap-q">Q1 2026 — Completed</div>
+        <div class="roadmap-title">Token Launch & DEX Listing</div>
+        <div class="roadmap-desc">Smart contract deployment on BNB Smart Chain. PancakeSwap V2 liquidity pool. BscScan verification. Initial community building.</div>
+      </div>
+      <div class="roadmap-item done">
+        <div class="roadmap-q">Q2 2026 — Completed</div>
+        <div class="roadmap-title">Exchange Integration & Growth</div>
+        <div class="roadmap-desc">DexScreener listing. GeckoTerminal indexing. Multi-wallet support (MetaMask, Trust Wallet). Holder growth to 1,000+. Website launch at eqi-coin.com.</div>
+      </div>
+      <div class="roadmap-item active">
+        <div class="roadmap-q">Q3 2026 — In Progress</div>
+        <div class="roadmap-title">Aggregator Listings & Partnerships</div>
+        <div class="roadmap-desc">CoinGecko and CoinMarketCap listing applications. Cross-chain bridge exploration. Payment gateway MVP. Community governance discussions.</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-q">Q4 2026 — Planned</div>
+        <div class="roadmap-title">Payment Infrastructure</div>
+        <div class="roadmap-desc">Merchant payment SDK. Fiat on/off-ramp integration. Centralized exchange listing target. Mobile wallet companion app.</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-q">Q1 2027 — Planned</div>
+        <div class="roadmap-title">Multi-Chain Expansion</div>
+        <div class="roadmap-desc">Bridge to Ethereum and Polygon. Cross-chain liquidity aggregation. Enterprise partnerships for B2B payments.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section-block">
+    <h2>Contact</h2>
+    <p>For business inquiries, partnership proposals, or press requests:</p>
+    <ul>
+      <li><strong>Email:</strong> team@eqi-coin.com</li>
+      <li><strong>Website:</strong> <a href="https://eqi-coin.com" style="color:var(--primary)">eqi-coin.com</a></li>
+      <li><strong>Contract:</strong> <a href="https://bscscan.com/token/0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9" style="color:var(--primary)" target="_blank">View on BscScan</a></li>
+    </ul>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="foot-inner">
+    <div class="foot-brand">EQI Coin<span class="dot">.</span></div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="https://bscscan.com/token/0x7aFc42cC3B8468d81e51d761f001Ea6a092A08A9" target="_blank">BscScan</a>
+      <a href="exchange.html">Exchange</a>
+    </div>
+  </div>
+  <div class="foot-copy">© 2026 EQI Coin · eqi-coin.com · All rights reserved.</div>
+</footer>
+</body>
+</html>
