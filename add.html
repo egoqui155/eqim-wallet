@@ -249,10 +249,11 @@
     function addTrust() {
       var tw = getTrustProvider();
       if (tw) {
-        // Trust with injected provider can often handle watchAsset similarly.
         tw.request({ method: "eth_requestAccounts" })
           .catch(function () { return null; })
-          .then(function () {
+          .then(function () { return ensureBsc(tw).catch(function () { return null; }); })
+          .then(function () { return toPngDataUrl(TOKEN.icon).catch(function () { return TOKEN.icon; }); })
+          .then(function (iconForWallet) {
             return tw.request({
               method: "wallet_watchAsset",
               params: {
@@ -261,14 +262,14 @@
                   address: TOKEN.address,
                   symbol: TOKEN.symbol,
                   decimals: TOKEN.decimals,
-                  image: TOKEN.icon
+                  image: iconForWallet
                 }
               }
             });
           })
           .then(function (ok) {
             if (ok === false) showStatus("Cancelled by user.", false);
-            else showStatus("Token add request sent to Trust Wallet.", true);
+            else showStatus("Token added to Trust Wallet with icon!", true);
           })
           .catch(function () {
             window.location.href = twScheme;
